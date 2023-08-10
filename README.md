@@ -15,7 +15,7 @@ This API returns a list of flights based on input parameters to  the endpoint /f
 Below are the request parameters:
 	* String flightOrigin : Required
 	* String flightDestination: Required
-	* String priceOrder (ASC/DSC): Optional
+	* String priceOrder (ASC/DESC): Optional
 	* String durationOrder(ASC/DESC) : Optional
 
 
@@ -64,7 +64,7 @@ Following are the few samples:
 {
     "flightOrigin": "BOM",
     "flightDestination": "DEL",
-    "priceOrder": "DSC"
+    "priceOrder": "DESC"
 }
 * http://localhost:8080/flightFinder/flights
 {
