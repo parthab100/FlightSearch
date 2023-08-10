@@ -1,0 +1,741 @@
+{
+	"info": {
+		"_postman_id": "f67bc60a-e319-4c99-a22a-2c9f27e9b9e4",
+		"name": "Flight Search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28935566"
+	},
+	"item": [
+		{
+			"name": "Flight Search API",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"durationOrder\": \"DESC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/flightFinder/flights",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flightFinder",
+						"flights"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Flight Search API",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightFinder/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightFinder",
+								"flights"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Aug 2023 12:01:25 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"flightNumber\": \"F101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T20:30:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H\"\n    },\n    {\n        \"flightNumber\": \"G101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T18:00:00\",\n        \"arrivalTime\": \"2023-08-10T19:30:00\",\n        \"duration\": \"PT1H30M\"\n    },\n    {\n        \"flightNumber\": \"F201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T21:15:00\",\n        \"arrivalTime\": \"2023-08-10T22:30:00\",\n        \"duration\": \"PT1H15M\"\n    },\n    {\n        \"flightNumber\": \"G201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T20:20:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H10M\"\n    }\n]"
+				},
+				{
+					"name": "Flight Search API",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightFinder/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightFinder",
+								"flights"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Aug 2023 12:01:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        \"Invalid Destination: Empty Flight Destination\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8080/flightFinder/flights",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"priceOrder\": \"ASC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/flightFinder/flights",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flightFinder",
+						"flights"
+					]
+				},
+				"description": "Flight Serach with priceOrder ASC"
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/flightFinder/flights",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"priceOrder\": \"ASC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightFinder/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightFinder",
+								"flights"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Aug 2023 12:02:09 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"flightNumber\": \"F101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T20:30:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H\"\n    },\n    {\n        \"flightNumber\": \"F201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T21:15:00\",\n        \"arrivalTime\": \"2023-08-10T22:30:00\",\n        \"duration\": \"PT1H15M\"\n    },\n    {\n        \"flightNumber\": \"G101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T18:00:00\",\n        \"arrivalTime\": \"2023-08-10T19:30:00\",\n        \"duration\": \"PT1H30M\"\n    },\n    {\n        \"flightNumber\": \"G201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T20:20:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H10M\"\n    }\n]"
+				},
+				{
+					"name": "http://localhost:8080/flightFinder/flights",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"priceOrder\": \"DESC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightFinder/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightFinder",
+								"flights"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Aug 2023 12:02:44 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"flightNumber\": \"G101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T18:00:00\",\n        \"arrivalTime\": \"2023-08-10T19:30:00\",\n        \"duration\": \"PT1H30M\"\n    },\n    {\n        \"flightNumber\": \"G201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T20:20:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H10M\"\n    },\n    {\n        \"flightNumber\": \"F101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T20:30:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H\"\n    },\n    {\n        \"flightNumber\": \"F201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T21:15:00\",\n        \"arrivalTime\": \"2023-08-10T22:30:00\",\n        \"duration\": \"PT1H15M\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8080/flightFinder/flights",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"durationOrder\": \"DESC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/flightFinder/flights",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flightFinder",
+						"flights"
+					]
+				},
+				"description": "Flight search with priceOrder desc"
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/flightFinder/flights",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"durationOrder\": \"DESC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightFinder/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightFinder",
+								"flights"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Aug 2023 12:03:33 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"flightNumber\": \"G101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T18:00:00\",\n        \"arrivalTime\": \"2023-08-10T19:30:00\",\n        \"duration\": \"PT1H30M\"\n    },\n    {\n        \"flightNumber\": \"F201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T21:15:00\",\n        \"arrivalTime\": \"2023-08-10T22:30:00\",\n        \"duration\": \"PT1H15M\"\n    },\n    {\n        \"flightNumber\": \"G201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T20:20:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H10M\"\n    },\n    {\n        \"flightNumber\": \"F101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T20:30:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H\"\n    }\n]"
+				},
+				{
+					"name": "http://localhost:8080/flightFinder/flights",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"durationOrder\": \"ASC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightFinder/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightFinder",
+								"flights"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Aug 2023 12:04:02 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"flightNumber\": \"F101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T20:30:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H\"\n    },\n    {\n        \"flightNumber\": \"G201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T20:20:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H10M\"\n    },\n    {\n        \"flightNumber\": \"F201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T21:15:00\",\n        \"arrivalTime\": \"2023-08-10T22:30:00\",\n        \"duration\": \"PT1H15M\"\n    },\n    {\n        \"flightNumber\": \"G101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T18:00:00\",\n        \"arrivalTime\": \"2023-08-10T19:30:00\",\n        \"duration\": \"PT1H30M\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8080/flightFinder/flights",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"priceOrder\": \"DESC\",\r\n    \"durationOrder\": \"ASC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/flightFinder/flights",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flightFinder",
+						"flights"
+					]
+				},
+				"description": "Flight search with durationOrder ASC"
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/flightFinder/flights Copy",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"priceOrder\": \"DESC\",\r\n    \"durationOrder\": \"ASC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightFinder/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightFinder",
+								"flights"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Aug 2023 11:54:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"flightNumber\": \"G201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T20:20:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H10M\"\n    },\n    {\n        \"flightNumber\": \"G101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T18:00:00\",\n        \"arrivalTime\": \"2023-08-10T19:30:00\",\n        \"duration\": \"PT1H30M\"\n    },\n    {\n        \"flightNumber\": \"F101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T20:30:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H\"\n    },\n    {\n        \"flightNumber\": \"F201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T21:15:00\",\n        \"arrivalTime\": \"2023-08-10T22:30:00\",\n        \"duration\": \"PT1H15M\"\n    }\n]"
+				},
+				{
+					"name": "http://localhost:8080/flightFinder/flights Copy",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"priceOrder\": \"ASC\",\r\n    \"durationOrder\": \"DESC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightFinder/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightFinder",
+								"flights"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Aug 2023 11:55:09 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"flightNumber\": \"F201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T21:15:00\",\n        \"arrivalTime\": \"2023-08-10T22:30:00\",\n        \"duration\": \"PT1H15M\"\n    },\n    {\n        \"flightNumber\": \"F101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 80,\n        \"departureTime\": \"2023-08-10T20:30:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H\"\n    },\n    {\n        \"flightNumber\": \"G101\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T18:00:00\",\n        \"arrivalTime\": \"2023-08-10T19:30:00\",\n        \"duration\": \"PT1H30M\"\n    },\n    {\n        \"flightNumber\": \"G201\",\n        \"flightOrigin\": \"BOM\",\n        \"flightDestination\": \"DEL\",\n        \"flightPrice\": 100,\n        \"departureTime\": \"2023-08-10T20:20:00\",\n        \"arrivalTime\": \"2023-08-10T21:30:00\",\n        \"duration\": \"PT1H10M\"\n    }\n]"
+				},
+				{
+					"name": "http://localhost:8080/flightFinder/flights",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"priceOrder\": \"DESC\",\r\n    \"durationOrder\": \"ASC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightFinder/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightFinder",
+								"flights"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "http://localhost:8080/flightFinder/flights",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightOrigin\": \"BOM\",\r\n    \"flightDestination\": \"DEL\",\r\n    \"priceOrder\": \"DESC\",\r\n    \"durationOrder\": \"ABCD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightFinder/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightFinder",
+								"flights"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Aug 2023 14:28:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        \"Sorting Order Should be ASc or DESC only\"\n    ]\n}"
+				}
+			]
+		}
+	]
+}
